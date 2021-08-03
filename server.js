@@ -33,7 +33,7 @@ server.post('/search', async (request, response) => {
 
     await browser.close();
 
-    response.sendStatus(200).send(getResults);
+    response.status(200).send(getResults);
 });
 
 server.post('/infos', async (request, response) => {
