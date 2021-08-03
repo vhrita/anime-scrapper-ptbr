@@ -1,19 +1,19 @@
 # Anime Scrapper PTBR Web API
 
-### 🇧🇷 Olá, por essa ser uma API que retorna todos seus dados em português do brasil, o Readme principal foi escrito em minha língua nativa. 🇧🇷
+#### :brazil: Olá, por essa ser uma API que retorna todos seus dados em português do brasil, o Readme principal foi escrito em minha língua nativa. :brazil:
 
 #### ***🛠 A API ainda está em desenvolvimento, porém conta com endpoints funcionais para teste, novos endpoint ainda serão adicionados! 🛠***
 
-***URL Base: *** https://anime-scrapper-ptbr.herokuapp.com/
+***URL Base:*** https://anime-scrapper-ptbr.herokuapp.com/
 
-#### Endpoints Ativos
+### Endpoints Ativos
 * [/search](#search)
 * [/infos](#infos)
 
-#### Exemplos
+### Exemplos
 * [Exemplos de Erros](#errors)
 
-##### /search
+### /search
 * ***Endpoint:*** https://anime-scrapper-ptbr.herokuapp.com/search
 * ***Método:*** POST
 * ***Recebe:*** JSON - String
@@ -24,7 +24,7 @@
   * imgUrl - Link da imagem do banner do anime
   * link - Link para acessar as infos do anime (usado como parâmetro em [/infos](#infos))
   
-###### Exemplo de uso
+#### Exemplo de uso
 * ***Requisição:***
     POST https://anime-scrapper-ptbr.herokuapp.com/search
     Body (JSON):
