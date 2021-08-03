@@ -4,7 +4,7 @@
 
 #### ***🛠 A API ainda está em desenvolvimento, porém conta com endpoints funcionais para teste, novos endpoint ainda serão adicionados! 🛠***
 
-***URL Base: ***[https://anime-scrapper-ptbr.herokuapp.com/](https://anime-scrapper-ptbr.herokuapp.com)
+***URL Base: *** https://anime-scrapper-ptbr.herokuapp.com/
 
 #### Endpoints Ativos
 * [/search](#search)
@@ -14,11 +14,11 @@
 * [Exemplos de Erros](#errors)
 
 ##### /search
-* ***Endpoint: *** [https://anime-scrapper-ptbr.herokuapp.com/search](https://anime-scrapper-ptbr.herokuapp.com/search)
-* ***Método: ***POST
-* ***Recebe: ***JSON - String
+* ***Endpoint:*** https://anime-scrapper-ptbr.herokuapp.com/search
+* ***Método:*** POST
+* ***Recebe:*** JSON - String
   * search - Palavras chave para nomes de animes
-* ***Retorna: ***JSON - Array de objetos com resultados
+* ***Retorna:*** JSON - Array de objetos com resultados
   * title - Nome do anime
   * episodes - Quantidade de episódios do anime
   * imgUrl - Link da imagem do banner do anime
@@ -26,7 +26,7 @@
   
 ###### Exemplo de uso
 * ***Requisição:***
-    POST [https://anime-scrapper-ptbr.herokuapp.com/search](https://anime-scrapper-ptbr.herokuapp.com/search)
+    POST https://anime-scrapper-ptbr.herokuapp.com/search
     Body (JSON):
     ```
     {
@@ -86,4 +86,4 @@
         "link": "https://meusanimes.com/ver-animess-on/boku-no-hero-academia-online"
     }
   ]
-```
+  ```
