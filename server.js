@@ -11,7 +11,11 @@ server.post('/search', async (request, response) => {
     let query = request.body.search;
     query = query.trim().replace(/\s/g, '+');
     
-    const browser = await puppeteer.launch({ headless: true, waitUntil: 'domcontentloaded'});
+    const browser = await puppeteer.launch({
+        headless: true,
+        waitUntil: 'domcontentloaded',
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
     await page.goto(`${animeURL}/?s=${query}`);
 
@@ -34,7 +38,11 @@ server.post('/search', async (request, response) => {
 
 server.post('/infos', async (request, response) => {
     let link = request.body.link;
-    const browser = await puppeteer.launch({ headless: true, waitUntil: 'domcontentloaded' });
+    const browser = await puppeteer.launch({
+        headless: true,
+        waitUntil: 'domcontentloaded',
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
     await page.goto(`${link}`);
 
