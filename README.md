@@ -87,3 +87,80 @@
     }
   ]
   ```
+
+### /infos
+* ***Endpoint:*** https://anime-scrapper-ptbr.herokuapp.com/infos
+* ***Método:*** POST
+* ***Recebe:*** JSON - String
+  * link - Link da página do anime recebido em [/search](#search)
+* ***Retorna:*** JSON - Array de objetos com resultados
+  * title - Nome do anime
+  * status - Completo ou Lançamento
+  * releaseDay - Caso lançamento: Dia da semana em que os episódios lançam; Caso completo: String vazia
+  * genres - Array de strings com todos os gêneros do anime
+  * numbers - Array de objetos com informações quantitativas:
+    * type - Do que se trata a informação *value* no mesmo objeto
+    * value - Quantidade referente a informação *type*
+  * synopsis - Sinopse completa do anime
+  * infos - Array de obejtos com informações sobre a produção do anime
+    * title - Título informativo sobre do que se trata a informação em *content*
+    * content - String de conteúdo da informação referente ao *title*
+  
+#### Exemplo de uso
+* ***Requisição:***
+    POST https://anime-scrapper-ptbr.herokuapp.com/infos
+    Body (JSON):
+    ```
+    {
+        "link" : "https://meusanimes.com/ver-animess-on/boku-no-hero-academia-2-dublado-episodios"
+    }
+    ```
+
+* ***Resultado:***
+  ```
+  {
+    "title": "Boku no Hero Academia 2 Dublado",
+    "status": "Completo",
+    "releaseDay": "",
+    "genres": [
+        "Ação",
+        "Comédia",
+        "Shounen",
+        "Superpoder",
+        "Vida Escolar"
+    ],
+    "numbers": [
+        {
+            "type": "EPISÓDIOS",
+            "value": "25"
+        },
+        {
+            "type": "ESPECIAIS",
+            "value": "0"
+        },
+        {
+            "type": "FILMES",
+            "value": "0"
+        }
+    ],
+    "synopsis": "Segunda Temporada de Boku no Hero Academia , O que é um herói? Para Midoriya Izuku, a resposta dessa pergunta sempre foi simples: “Tudo que eu quero ser!” E quem é o maior herói? Bem, o lendário All Might (Todo Poderoso), é claro. All Might é o herói número um e também o “Símbolo da Paz” mundial. Nem mesmo em seus sonhos mais loucos Izuku poderia imaginar que logo seu caminho cruzaria o de seu herói de infância. Em Boku no Hero Academia o status é governado pelas “Individualidades”, superpoderes singulares que se desenvolvem na infância. Mas infelizmente, o viciado em heróis, Midoriya “Deku” Izuku nunca teve uma Individualidade. Isto é, até conhecer All Might, o maior herói de todos. A transformação de sonhador em herói de Izuku começa na Academia U.A., a melhor escola de treinamento de heróis do Japão. Izuku fica eufórico quando é aceito para essa academia de prestígio, especialmente quando descobre que All Might é um dos professores. Que surpresas essa academia poderosa aguarda? Izuku será capaz de acompanhar os colegas de classe de elite?",
+    "infos": [
+        {
+            "title": "AUTOR",
+            "content": "Kōhei Horikoshi"
+        },
+        {
+            "title": "ESTÚDIO",
+            "content": "Bones"
+        },
+        {
+            "title": "DIRETOR",
+            "content": "Kenji Nagasaki"
+        },
+        {
+            "title": "ANO",
+            "content": "2017"
+        }
+    ]
+  }
+  ```
