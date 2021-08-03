@@ -1,3 +1,4 @@
+require('express-async-errors');
 const express = require('express');
 const puppeteer = require('puppeteer');
 
@@ -8,8 +9,9 @@ const animeURL = "https://meusanimes.com";
 
 server.post('/search', async (request, response) => {
     let query = request.body.search;
-    query = query.replace(/\s/g, '+');
-    const browser = await puppeteer.launch({headless: true});
+    query = query.trim().replace(/\s/g, '+');
+    
+    const browser = await puppeteer.launch({ headless: true, waitUntil: 'domcontentloaded'});
     const page = await browser.newPage();
     await page.goto(`${animeURL}/?s=${query}`);
 
@@ -27,12 +29,12 @@ server.post('/search', async (request, response) => {
 
     await browser.close();
 
-    response.send(getResults);
+    response.sendStatus(200).send(getResults);
 });
 
 server.post('/infos', async (request, response) => {
     let link = request.body.link;
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: true, waitUntil: 'domcontentloaded' });
     const page = await browser.newPage();
     await page.goto(`${link}`);
 
@@ -95,8 +97,16 @@ server.post('/infos', async (request, response) => {
 
     await browser.close();
 
-    response.send(getInfos);
+    response.status(200).send(getInfos);
+});
+
+server.use((error, req, response, next) => {
+    console.log(`${error.stack}`);
+    response.status(error.statusCode ? error.statusCode : 500)
+    .send({'Error' : error.statusCode ? error.message : 'Internal Server Error'});
 });
 
 const port = process.env.PORT || 3000;
-server.listen(port);
+server.listen(port, () =>{
+    console.log(`Listening on port: ${port}`);
+});
