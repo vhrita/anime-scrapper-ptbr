@@ -7,6 +7,16 @@ server.use(express.json());
 
 const animeURL = "https://meusanimes.com";
 
+
+server.get('/', (request, response) => {
+   response.redirect('https://github.com/vhrita/anime-scrapper-ptbr#readme');
+
+//    response.status(200).send({
+//     'status' : 'Successo! Servidor rodando normalmente.',
+//     'doc' : 'Veja a documentação em https://github.com/vhrita/anime-scrapper-ptbr#readme'
+// });
+});
+
 server.post('/search', async (request, response) => {
     let query = request.body.search;
     query = query.trim().replace(/\s/g, '+');
